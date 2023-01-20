@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>TYPING TEST GAME</title>
+</head>
+<body>
+    <div class="mainDiv">
+        <div class="centerDiv">
+            <H1>Welcome to the TYPING TEST GAME</H1>
+            <h2 id="msg"></h2>
+            <textarea name="" id="mywords" cols="100" rows="10" placeholder="Remember to nice!"></textarea>
+            <br>
+            <button id="mainbtn" class="mainbtn" onclick="startGame()">Start</button>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+
+    //set of word to apper for writing
+    const setofWords = ["Hi this is Muskan Prajapati and I am a student.",  
+    "Hope you are fine and having fun, this is the simple game you can make in javascript.", 
+    "If you want to be successful then you have to be determined and have to deciplined no matter how.",
+    "Live the life of your choice or else be the slave."];
+
+    const msg = document.getElementById("msg");
+    const typewords = document.getElementById("mywords");
+    let btn = document.getElementById("mainbtn");
+    let startTime,endTime;
+    
+    function playGame(){                        //starting the game 
+        let randomnumber = Math.floor(Math.random()*setofWords.length);
+        msg.innerText = setofWords[randomnumber];
+        let date = new Date();
+        startTime = date.getTime();
+        btn.innerText = "Done";
+    }
+
+    function endGame() {                       //ending the game 
+        let date = new Date();
+        endTime = date.getTime();
+        btn.innerText = "Start";
+        let totalTime = ((endTime - startTime)/1000);
+
+        let totalStr = typewords.value;
+        let wordCount = wordCounter(totalStr);
+
+        let speed = Math.round((wordCount/totalTime)*60);
+
+        let finalMsg = "You typed total at " +speed+" words per minutes. ";
+        finalMsg += compareWords(msg.innerText , totalStr );
+        msg.innerText = finalMsg;
+
+    }
+
+    function compareWords(str1, str2) {  //comparing the words to check errors
+        let words1 = str1.split(" ");   //msg inner text
+        let words2 = str2.split(" ");   //response on textarea
+        let count = 0;
+
+        // -- arrayName.foreach will take whole function ONCE with current value and the index no of that array.
+        words1.forEach(function(item, index) {  
+             //item is for msg inner text element
+            if(item == words2[index]){
+                count++; 
+            }
+        })
+
+        let errorWords = (words1.length - count);
+        return (count + " correct words out of "+ words1.length + " words and the total number of errors are " + errorWords + ".")
+
+    }
+
+    function wordCounter(str) {  //to count the words on textarea
+        let response = str.split(" ").length;
+        return response;
+    }
+ 
+ function startGame(){           //main funcction to start or end the game
+        if(btn.innerText == "Start"){
+            typewords.disabled = false;
+            playGame();
+        }else if(btn.innerText == "Done"){
+            typewords.disabled = true;
+            endGame();
+        }
+    }
+
+
+</script>
+</html>

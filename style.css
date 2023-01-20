@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+
+body{
+    background: rgb(148,238,240);
+background: radial-gradient(circle, rgba(148,238,240,1) 0%, rgba(73,93,237,1) 100%);
+}
+
+.mainDiv{
+    width: 50%;
+    height: 50vh;
+    position: relative;
+}
+
+.centerDiv{
+    /* border: 2px solid black; */
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: translateY(-50%, -50%);
+    text-align: center;
+}
+
+.centerDiv H1{
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    text-decoration: underline;
+    color: #ff2b2fe7;
+    text-shadow: 1px 2px 3px #91a9b9;
+    font-size: 2.1rem;
+}
+
+h2{
+    margin-bottom: 10px;
+    color: rgb(231, 40, 145);
+    text-align: center;
+}
+
+textarea{
+    background-color: rgba(179, 177, 177, 0.231);
+    box-shadow: 0 0 0px rgba(183, 176, 176, 0.2);
+    padding: 10px;
+    border-radius:10px 10px 0 0;
+    border: 20px solid #17181a6f;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 10px ;
+}
+
+p{
+    text-align: center;
+}
+
+.mainbtn{
+    color: #fff;
+    padding: 10px 40px;
+    border-radius:20px;
+    border: 2px solid #22323d;
+    background-color: #ff2b2bfe;
+    font-size: 1.2rem;
+}
